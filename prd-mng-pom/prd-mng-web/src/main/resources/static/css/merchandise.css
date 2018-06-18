@@ -12,6 +12,7 @@ div.contents{
 	text-align: center;
 	margin: 10px 0px 10px 0px;
 }
+
 dl#box {
 	border: 1px solid #333;
 	border-top: none;
@@ -31,6 +32,9 @@ dl#box dd{
 	border-top: 1px solid #333;
 	_height: 1%; /* WinIEで頭の文字が右に微妙にずれるのを補正 */
 	margin-left: 5em;
+}
+div.footer{
+	text-align: center;
 }
 .red  { color: 'red' };
 .blue { color: 'blue'}; 
