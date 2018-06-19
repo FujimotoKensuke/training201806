@@ -24,6 +24,17 @@ public class ProductController {
 
     @Autowired
     private ProductService ProductService;
+    
+     /**
+     * 商品情報取得API
+     */
+    @RequestMapping(value = "/productList", method = RequestMethod.GET)
+    public String getProductList(Model model) {
+
+        final List<ProductModel> productModelList = ProductService.getProductList();
+        model.addAttribute("productModelList", productModelList);   // パラメタを渡す
+        return "productList"; // 使用するテンプレートの名前を指定する
+    }
 
     /**
      * 商品情報登録(初期表示)API
@@ -46,16 +57,6 @@ public class ProductController {
 
         model.addAttribute("message", "商品の新規登録が完了しました。");   // パラメタを渡す
         return "registration"; // 使用するテンプレートの名前を指定する
-    }
-     /**
-     * 商品情報取得API
-     */
-    @RequestMapping(value = "/productList", method = RequestMethod.GET)
-    public String getProductList(Model model) {
-
-        final List<ProductModel> productModelList = ProductService.getProductList();
-        model.addAttribute("productModelList", productModelList);   // パラメタを渡す
-        return "productList"; // 使用するテンプレートの名前を指定する
     }
 }
 

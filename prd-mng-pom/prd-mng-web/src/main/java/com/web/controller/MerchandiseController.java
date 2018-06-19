@@ -22,21 +22,4 @@ public class MerchandiseController {
         return "top"; // 使用するテンプレートの名前を指定する
     }
 
-    /**
-     * 商品一覧画面表示API
-     */
-    @RequestMapping(value = "/productList", method = RequestMethod.POST)
-    public String productList(Model model) {
-        //model.addAttribute("message", "じゃん…けん…");   // パラメタを渡す
-        return "productList"; // 使用するテンプレートの名前を指定する
-    }
-
-    /**
-     * 商品登録画面表示API
-     */
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        //model.addAttribute("message", "じゃん…けん…");   // パラメタを渡す
-        return "registration"; // 使用するテンプレートの名前を指定する
-    }
 }

@@ -12,8 +12,7 @@
     <div class="main">
         <div class="header">
             <h1>商品登録</h1>
-            <p th:if="${message}" th:text="${message}" class="blue" />
-            <p th:if="${validationError}" th:text="${validationError}"></p>
+            <p th:if="${validationError}" th:text="${validationError}">validation error</p>
         </div>
         <form role="form" action="./productList.html" th:action="@{./productList}" th:object="${registrationForm}">
           <!-- productCd -->
