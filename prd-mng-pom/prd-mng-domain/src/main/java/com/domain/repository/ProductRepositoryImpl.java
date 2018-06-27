@@ -22,10 +22,9 @@ import org.springframework.stereotype.Repository;
 public class ProductRepositoryImpl implements ProductRepository {
 
     @Autowired
-    private ProductMapper ProductMapper;
+    private ProductMapper productMapper;
 
     /**
-     * e
      * 商品情報登録
      *
      * @param model
@@ -36,7 +35,21 @@ public class ProductRepositoryImpl implements ProductRepository {
         entity.setDeletedFlg(MerchandiseEnum.DeletedFlg.OFF.getId());
         entity.setVersion(0L);
 
-        ProductMapper.insert(entity);
+        productMapper.insert(entity);
+    }
+    
+    /**
+     * 商品情報更新
+     *
+     * @param model
+     */
+    @Override
+    public void updateProduct(ProductModel model) {
+        ProductEntity entity = ProductEntityFactory.create(model);
+        entity.setDeletedFlg(MerchandiseEnum.DeletedFlg.OFF.getId());
+        entity.setVersion(0L);
+
+        productMapper.update(entity);
     }
     
     /**
@@ -46,7 +59,7 @@ public class ProductRepositoryImpl implements ProductRepository {
      */
     @Override
     public List<ProductEntity> selectProductList() {
-        return ProductMapper.selectList();
+        return productMapper.selectList();
     }
 
 }

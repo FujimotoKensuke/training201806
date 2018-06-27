@@ -24,6 +24,13 @@ public interface ProductService {
     void create(@NonNull ProductModel model);
     
     /**
+     * 商品情報登録処理
+     *
+     * @param model
+     */
+    void update(@NonNull ProductModel model);
+    
+    /**
      * 商品情報一覧取得処理
      *
      * @return

@@ -4,7 +4,7 @@ function update(elm) {
     var productCd = texts[1].innerHTML;
     var productName = texts[2].innerHTML;
     var price = texts[3].innerHTML;
-    location.href = "./registration.html?productId=" + productId + "&productCd=" + productCd + "&productName=" + productName + "&price=" + price;
+    location.href = "./update?productId=" + productId + "&productCd=" + productCd + "&productName=" + productName + "&price=" + price;
 }
 
 function init() {

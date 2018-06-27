@@ -9,7 +9,7 @@ import com.common.misc.MerchandiseEnum;
 import java.io.Serializable;
 
 /**
- * ユーザー情報モデル
+ * 商品情報モデル
  *
  * @author a26ishibashi
  */
@@ -20,7 +20,7 @@ public class ProductModel implements Serializable {
     /**
      * ユーザーID
      */
-    private final String productId;
+    private final Integer productId;
     
     /**
      * ユーザーID
@@ -33,9 +33,9 @@ public class ProductModel implements Serializable {
     private final String productName;
 
     /**
-     * コメント
+     * 価格
      */
-    private final int price;
+    private final Integer price;
 
     /**
      * 削除フラグ
@@ -48,10 +48,10 @@ public class ProductModel implements Serializable {
     private final Long version;
 
     public ProductModel(
-            String productId,
+            Integer productId,
             String productCd,
             String productName,
-            int price,
+            Integer price,
             MerchandiseEnum.DeletedFlg deletedFlg,
             Long version) {
         this.productId = productId;
@@ -65,7 +65,7 @@ public class ProductModel implements Serializable {
     /**
      * @return the productId
      */
-    public String getProductId() {
+    public Integer getProductId() {
         return productId;
     }
     
@@ -86,7 +86,7 @@ public class ProductModel implements Serializable {
     /**
      * @return the price
      */
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 

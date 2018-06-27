@@ -12,9 +12,10 @@
     <div class="main">
         <div class="header">
             <h1>商品登録</h1>
+            <p th:if="${message}" th:text="${message}" class="blue" />
             <p th:if="${validationError}" th:text="${validationError}">validation error</p>
         </div>
-        <form role="form" action="./productList.html" th:action="@{./productList}" th:object="${registrationForm}">
+        <form role="form" action="./registration.html" th:action="@{./registration}" th:object="${registrationForm}"　method="post">
           <!-- productCd -->
           <div class="contents">
             <label class="control-label" for="productCd"><abbr title="required">*</abbr>商品コード</label>
@@ -33,16 +34,23 @@
             <input type="text" class="form-control" id="price" name="price" th:field="*{price}" />
             <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="help-block" value="${priceError}"></span>
           </div>
-          <div class="contents">
+          <div class="contents"　th:if="${updateFlg == 0}">
             <button type="submit" name="enter" class="btn btn-default" >登録</button>
+          </div>
+          <div class="contents"　th:if="${updateFlg == 1}">
+            <button type="submit" name="update" class="btn btn-default" >更新</button>
           </div>
           <!-- productId -->
             <input type="hidden" id="productId" name="productId" th:field="*{productId}" />
         </form>
         <div class="footer">
             <br/>
-            <p><a href="productList.html">商品一覧へ戻る</a></p>
-            <p><a href="top.html">トップへ戻る</a></p>
+            <form action="./productList" th:action="@{./productList}" method="get">
+                <input type="submit" class="btn btn-link" th:value="商品一覧へ戻る"/>
+            </form>
+            <form action="./top" th:action="@{./top}" method="get">
+                <input type="submit" class="btn btn-link" th:value="トップへ戻る"/>
+            </form>
         </div>
     </div>
 </body>

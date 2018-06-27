@@ -18,6 +18,8 @@ public interface ProductRepository {
 
     void insertProduct(ProductModel model);
     
+    void updateProduct(ProductModel model);
+    
     List<ProductEntity> selectProductList();
 
 }

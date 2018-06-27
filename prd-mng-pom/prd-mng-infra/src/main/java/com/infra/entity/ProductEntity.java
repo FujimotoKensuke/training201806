@@ -25,13 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "product")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Product.findAll", query = "SELECT u FROM Product u")
-    , @NamedQuery(name = "Product.findById", query = "SELECT u FROM Product u WHERE u.productId = :productId")
-    , @NamedQuery(name = "Product.findByCd", query = "SELECT u FROM Product u WHERE u.productCd = :productCd")
-    , @NamedQuery(name = "Product.findByName", query = "SELECT u FROM Product u WHERE u.productName = :productName")
-    , @NamedQuery(name = "Product.findByComment", query = "SELECT u FROM Product u WHERE u.price = :price")
-    , @NamedQuery(name = "Product.findByDeletedFlg", query = "SELECT u FROM Product u WHERE u.deletedFlg = :deletedFlg")
-    , @NamedQuery(name = "Product.findByVersion", query = "SELECT u FROM Product u WHERE u.version = :version")})
+    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
+    , @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.productId = :productId")
+    , @NamedQuery(name = "Product.findByCd", query = "SELECT p FROM Product p WHERE p.productCd = :productCd")
+    , @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.productName = :productName")
+    , @NamedQuery(name = "Product.findByprice", query = "SELECT p FROM Product p WHERE p.price = :price")
+    , @NamedQuery(name = "Product.findByDeletedFlg", query = "SELECT p FROM Product p WHERE p.deletedFlg = :deletedFlg")
+    , @NamedQuery(name = "Product.findByVersion", query = "SELECT p FROM Product p WHERE p.version = :version")})
 public class ProductEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class ProductEntity implements Serializable {
     @NotNull
     @Size(min = 1, max = 6)
     @Column(name = "productId")
-    private String productId;
+    private Integer productId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 6)
@@ -68,11 +68,11 @@ public class ProductEntity implements Serializable {
     public ProductEntity() {
     }
 
-    public ProductEntity(String productId) {
+    public ProductEntity(Integer productId) {
         this.productId = productId;
     }
 
-    public ProductEntity(String productId, String productCd, String productName, int price, int deletedFlg, long version) {
+    public ProductEntity(Integer productId, String productCd, String productName, Integer price, int deletedFlg, long version) {
         this.productId = productId;
         this.productCd = productCd;
         this.productName = productName;
@@ -81,11 +81,11 @@ public class ProductEntity implements Serializable {
         this.version = version;
     }
 
-    public String getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
     
@@ -105,11 +105,11 @@ public class ProductEntity implements Serializable {
         this.productName = productName;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

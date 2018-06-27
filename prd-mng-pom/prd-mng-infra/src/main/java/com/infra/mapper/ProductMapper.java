@@ -12,5 +12,7 @@ public interface ProductMapper {
 
     void insert(ProductEntity entity);
     
+    void update(ProductEntity entity);
+    
      java.util.List<ProductEntity> selectList();
 }

@@ -6,11 +6,15 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 <title>商品管理システム</title>
+<script type="text/javascript" src="js/merchandise.js" th:src="@{/js/merchandise.js}"></script>
 </head>
 <body>
     <div class="main">
         <div class="header">
             <h1>商品一覧</h1>
+            <form action="./registration" th:action="@{./registration}" method="post">
+                <input type="submit" class="btn btn-link" th:value="新規登録" name="init" />
+            </form>
         </div>
         <div class="contents">
             <table class="table table-striped">
@@ -23,14 +27,12 @@
                     </tr>
                 </thead>
                 <tbody th:remove="all-but-first" th:each="result : ${productModelList}">
-                    <form action="./registration" th:action="@{./registration}" method="post">
                         <tr onclick="update(this)">
                             <td th:text="${result['productId']}" >01</td>
                             <td th:text="${result['productCd']}" >PR01</td>
                             <td th:text="${result['productName']}">商品A</td>
                             <td th:text="${result['price']}">100</td>
                         </tr>
-                    </form>
                 </tbody>
             </table>
         </div>

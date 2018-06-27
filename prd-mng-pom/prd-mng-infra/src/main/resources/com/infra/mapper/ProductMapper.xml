@@ -6,7 +6,13 @@
     <insert id="insert">
         INSERT INTO product (productId, productCd, productName, price, deletedFlg, version)
         VALUES (#{productId}, #{productCd}, #{productName}, #{price}, #{deletedFlg}, #{version})
-    </insert>
+    </insert> 
+    <update id="update">
+        UPDATE product 
+        SET productCd = #{productCd}, productName = #{productName}, price = #{price}
+            , deletedFlg = #{deletedFlg}, version = #{version}
+        WHERE productId = #{productId}
+    </update>
     <select id="selectList" resultType="com.infra.entity.ProductEntity">
         SELECT productId, productCd, productName, price, deletedFlg, version FROM product
     </select>

@@ -6,6 +6,8 @@
 package com.domain.form;
 
 import java.io.Serializable;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.lang.Nullable;
@@ -19,8 +21,9 @@ public class RegistrationForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Nullable
-    @Size(min = 1, max = 4)
-    private String productId;
+    @Min(1)
+    @Max(9999)   
+    private Integer productId;
     
     @NotNull
     @Size(min = 1, max = 6)
@@ -31,20 +34,21 @@ public class RegistrationForm implements Serializable {
     private String productName;
 
     @NotNull
-    @Size(min = 1, max = 6)
-    private int price;
+    @Min(1)
+    @Max(999999)
+    private Integer price;
 
     /**
      * @return the productId
      */
-    public String getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
     /**
      * @param productId the productId to set
      */
-    public void setProductId(String productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
     
@@ -79,14 +83,14 @@ public class RegistrationForm implements Serializable {
     /**
      * @return the price
      */
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 }

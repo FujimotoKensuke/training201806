@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductRepository ProductRepository;
+    private ProductRepository productRepository;
 
     /**
      * 商品情報登録処理
@@ -34,9 +34,21 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(rollbackFor = Exception.class)
     public void create(@NonNull ProductModel model) {
         // ユーザー情報登録
-        ProductRepository.insertProduct(model);
+        productRepository.insertProduct(model);
     }
-
+    
+    /**
+     * 商品情報登録処理
+     *
+     * @param model
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(@NonNull ProductModel model) {
+        // ユーザー情報登録
+        productRepository.updateProduct(model);
+    }
+    
     /**
      * 商品情報一覧取得処理
      *
@@ -44,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductModel> getProductList() {
         // 商品情報一覧取得
-        return ProductModelFactory.create(ProductRepository.selectProductList());
+        return ProductModelFactory.create(productRepository.selectProductList());
     }
 
 }

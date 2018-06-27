@@ -16,7 +16,7 @@ public class MerchandiseController {
     /**
      * 初期画面表示API
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = {"","/top"}, method = RequestMethod.GET)
     public String top(Model model) {
         //model.addAttribute("message", "Hello, Spring Boot!");   // パラメタを渡す
         return "top"; // 使用するテンプレートの名前を指定する
