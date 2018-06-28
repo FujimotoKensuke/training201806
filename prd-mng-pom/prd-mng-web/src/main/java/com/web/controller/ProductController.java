@@ -72,7 +72,7 @@ public class ProductController {
         productService.create(ProductModelFactory.create(form));
 
         model.addAttribute("message", "商品の新規登録が完了しました。");   // パラメタを渡す
-        return "registration"; // 使用するテンプレートの名前を指定する
+        return "redirect:/productList"; // 使用するテンプレートの名前を指定する
     }
     
     /**
@@ -89,7 +89,7 @@ public class ProductController {
         productService.update(ProductModelFactory.create(form));
 
         model.addAttribute("message", "商品の新規登録が完了しました。");   // パラメタを渡す
-        return "registration"; // 使用するテンプレートの名前を指定する
+        return "redirect:/productList"; // 使用するテンプレートの名前を指定する
     }
     
 }
