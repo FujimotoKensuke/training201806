@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+body{
+    background-color:#f0f8ff;
+    
+    
+}
+
+div.main{
+    max-width:800px;
+    min-height:300px;
+    border: 1px solid #000;
+    margin: 0 auto;
+    background-color:#f0f8ff;
+    
+}
+div.header{
+	text-align: center;
+}
+div.contents{
+	text-align: center;
+	margin: 10px 0px 10px 0px;
+}
+
+tbody{
+    text-align-last: center;
+    
+}
+
+tbody.tr{
+    background-color: aqua;
+}

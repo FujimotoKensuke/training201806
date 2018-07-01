@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="css/user.css" th:href="@{/css/user.css}" />
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
+    <title>商品一覧</title>
+    <script type="text/javascript" src="js/item.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>商品一覧</h1>
+        </div>
+        <div class="contents">
+            <table class="table table-striped">
+                <thread>
+                    <tr>
+                        <th name="productCode">商品コード</th>
+                        <th name="productName">商品名</th>
+                        <th name="productPrice">価格</th>
+                    </tr>
+                </thread>
+
+                <tbody th:remove="all-but-first" th:each="result : $(itemModelList)">
+                    <tr onclick="update(this)" tabindex="1"
+                       onmouseover="this.style.backgroundColor='#b0c4de'" onmouseout="this.style.backgroundColor=''">
+                        <td th:text="${result('itemCode')}">00000</td>
+                        <td th:text="${result('itemName')}">テスト</td>
+                        <td th:text="${result('price')}">1,000</td>
+                    </tr>
+                </tbody>
+                
+                <tbody th:remove="all-but-first" th:each="result : $(itemModelList)">
+                    <tr onclick="update(this)" tabindex="2" onmouseover="this.style.backgroundColor='#b0c4de'" onmouseout="this.style.backgroundColor=''">
+                        <td th:text="${result('itemCode')}">00001</td>
+                        <td th:text="${result('itemName')}">テスト2</td>
+                        <td th:text="${result('price')}">1,0000</td>
+                    </tr>
+                </tbody>        
+            </table>
+
+            <div class="footer">
+                <a href="newCreate.html" tabindex="3" name="createLink">商品登録</a>
+                <p><a href="top.html" tabindex="4" name="topLink">トップへ戻る</a></p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
