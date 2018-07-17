@@ -19,7 +19,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
     
-    <modules></modules>
+    <modules>
+       <module>prd-mng-common</module>
+       <module>prd-mng-infra</module>
+       <module>prd-mng-domain</module>
+       <module>prd-mng-web</module>
+    </modules>
     
 	<dependencies>
 		<dependency>

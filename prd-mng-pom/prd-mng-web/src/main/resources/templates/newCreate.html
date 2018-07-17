@@ -19,28 +19,26 @@
             <form role="form" action="./newCreate.html" th:action="@{./itemCreate}" th:object="${itemCreateForm}" method="post">                
                 <div class="contents">
                     <label class="control-label" for="itemId"><abbr title="required">*</abbr>商品コード</label>
-                    <input type="text" class="form-control" id="itemId" name="itemId" th:field="*{itemId}"/> 
-<!--                           context:property placeholder='商品コードを入力してください(半角英数5文字以内)' maxlength="5" 
-                           pattern="^[0-9A-Za-z]+$" tabindex="1" required/>-->
-                    <span th:if="${#fields.hasError('itemId')}" th:errors="*{itemId}" class="help-block">error!</span>
+                    <input type="text" class="form-control" id="itemId" name="itemId" th:field="*{itemId}"
+                           context:property placeholder='商品コードを入力してください(半角英数5文字以内)' maxlength="5" 
+                           pattern="^[0-9A-Za-z]+$" tabindex="1" required/>
+                    <span th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}" class="help-block">error!</span>
                 </div>
-                <!--            商品名
-                            <div class="contents">
-                                <label class="control-label" for="itemName"><abbr title="required">*</abbr>商品名</label>
-                                <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}"
-                                       placeholder='商品名を入力してください' tabindex="2" required>
-                                <span th:if="${#fields.hasError('itemName')}" th:errors="*{itemName}" class="help-block" value="${itemNameError}"></span>
-                            </div>
-                            価格
-                            <div class="contents">
-                                <label class="control-label" for="price"><abbr title="required">*</abbr>価格</label>
-                                <input type="text" class="form-control" id="price" name="price" th:field="*{price}" 
-                                       placeholder='価格を入力してください(半角数字)' input pattern="^[0-9]+$" tabindex="3" required>
-                                <span th:if="${#fields.hasError('price')}" th:errors="*{price}" class="help-block" value="${priceError}"></span>
-                            </div>
-                            <div class="contents">
-                                <button type="submit" name="enter" class="btn btn-default" tabindex="4">登録</button>
-                            </div>-->
+                <div class="contents">
+                    <label class="control-label" for="itemName"><abbr title="required">*</abbr>商品名</label>
+                    <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}"
+                           placeholder='商品名を入力してください' tabindex="2" required>
+                    <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}" class="help-block" value="${itemNameError}"></span>
+                </div>
+                <div class="contents">
+                    <label class="control-label" for="price"><abbr title="required">*</abbr>価格</label>
+                    <input type="text" class="form-control" id="price" name="price" th:field="*{price}" 
+                           placeholder='価格を入力してください(半角数字)' input pattern="^[0-9]+$" tabindex="3" required>
+                    <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="help-block" value="${priceError}"></span>
+                </div>
+                <div class="contents">
+                    <button type="submit" name="enter" class="btn btn-default" tabindex="4">登録</button>
+                </div>
             </form>
 
             <div class="contents">

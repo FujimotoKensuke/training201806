@@ -1,7 +1,9 @@
 package com.web.controller;
 
+import com.domain.form.ItemCreateForm;
 import com.domain.form.UserCreateForm;
 import com.domain.model.UserModelFactory;
+import com.domain.service.UserCreateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.domain.service.UserCreateService;
 
 //import com.domain.form.ItemCreateForm;
 //import com.domain.model.ItemModelFactory;
@@ -23,7 +24,6 @@ import com.domain.service.UserCreateService;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import com.domain.service.ItemCreateService;
-
 /**
  * ユーザー情報関連コントローラ
  *
@@ -31,13 +31,12 @@ import com.domain.service.UserCreateService;
  */
 @Controller
 public class UserController {
-    
+
     @Autowired
     private UserCreateService userCreateService;
 
 //    @Autowired
 //    private ItemCreateService itemCreateService;
-
     /**
      * ユーザー情報登録(初期表示)API
      */
@@ -45,12 +44,11 @@ public class UserController {
     public String userCreateInit(@ModelAttribute UserCreateForm form, Model model) {
         return "userCreate"; // 使用するテンプレートの名前を指定する
     }
-    
+
 //    @RequestMapping(value = "/newCreate", params = "init", method = RequestMethod.POST)
 //    public String userCreateInit(@ModelAttribute ItemCreateForm form, Model model) {
 //        return "newCreate"; // 使用するテンプレートの名前を指定する
 //    }
-
     /**
      * ユーザー情報登録(登録実行)API
      */
@@ -65,16 +63,9 @@ public class UserController {
         model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
         return "userCreate"; // 使用するテンプレートの名前を指定する
     }
-    
-//        @RequestMapping(value = "/newCreate", params = "enter", method = RequestMethod.POST)
-//    public String newCreateDone(@Validated @ModelAttribute ItemCreateForm form, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            model.addAttribute("validationError", "不正な値が入力されました。");
-//            return newCreateInit(form, model);
-//        }
-//        itemCreateService.create(ItemModelFactory.create(form));
-//
-//        model.addAttribute("message", "ユーザーの新規登録が完了しました。");   // パラメタを渡す
-//        return "newCreate"; // 使用するテンプレートの名前を指定する
-//    }
+
+    @RequestMapping(value = "/newCreate", params = "createLink", method = RequestMethod.POST)
+    public String newCreateInit(@ModelAttribute ItemCreateForm form, Model model) {
+        return "newCreate"; // 使用するテンプレートの名前を指定する
+    }
 }

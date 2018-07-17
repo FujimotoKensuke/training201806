@@ -7,7 +7,7 @@ import org.springframework.lang.NonNull;
  *
  * @author Naoto Endo
  */
-public class ItemCreateService {
+public interface ItemCreateService {
 
     void create(@NonNull ItemModel model);
 

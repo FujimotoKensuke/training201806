@@ -7,53 +7,39 @@ package com.domain.model;
 
 import java.io.Serializable;
 
-
 /**
  * アイテム情報モデル
  *
  * @author Naoto Endo
  */
 public class ItemModel implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     /**
-    アイテムコード
-    */
+     * アイテムコード
+     */
     private final String itemId;
 
     /**
-    アイテム名
-    */    
+     * アイテム名
+     */
     private final String itemName;
 
     /**
-    値段
-    */    
+     * 値段
+     */
     private final int price;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     public ItemModel(
-            String ItemId,
-            String ItemName,
+            String itemId,
+            String itemName,
             int price,
-            Long version){
+            Long version) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.price = price;
     }
-    
-    
-    
 
     /**
      * @return the itemCode
@@ -75,7 +61,5 @@ public class ItemModel implements Serializable {
     public int getPrice() {
         return price;
     }
-    
-    
-    
+
 }

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "userinfo")
 @XmlRootElement
 @NamedQueries({
-        @NamedQuery(name = "Userinfo.findAll", query = "SELECT u FROM Userinfo u")
+    @NamedQuery(name = "Userinfo.findAll", query = "SELECT u FROM Userinfo u")
     , @NamedQuery(name = "Userinfo.findById", query = "SELECT u FROM Userinfo u WHERE u.id = :id")
     , @NamedQuery(name = "Userinfo.findByName", query = "SELECT u FROM Userinfo u WHERE u.name = :name")
     , @NamedQuery(name = "Userinfo.findByComment", query = "SELECT u FROM Userinfo u WHERE u.comment = :comment")
@@ -33,36 +33,36 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Userinfo.findByVersion", query = "SELECT u FROM Userinfo u WHERE u.version = :version")})
 
 public class ItemInfoEntity implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1,max = 12)
+    @Size(min = 1, max = 12)
     @Column(name = "id")
     private String id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1,max = 12)
+    @Size(min = 1, max = 12)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1,max = 12)
+    @Size(min = 1, max = 12)
     @Column(name = "price")
     private int price;
-    
-    public ItemInfoEntity(){        
+
+    public ItemInfoEntity() {
     }
-    
-    public ItemInfoEntity(String id){
+
+    public ItemInfoEntity(String id) {
         this.id = id;
     }
-    
-        public ItemInfoEntity(String id, String name) {
+
+    public ItemInfoEntity(String id, String name) {
         this.id = id;
         this.name = name;
-        }
+    }
 
     public String getId() {
         return id;
@@ -84,34 +84,33 @@ public class ItemInfoEntity implements Serializable {
         return price;
     }
 
-        public void setPrice(int price) {
+    public void setPrice(int price) {
         this.price = price;
-        }
-   
-        @Override
-        public int hashCode() {
+    }
+
+    @Override
+    public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
-        }
-    
-        @Override
-        public boolean equals(Object object) {
+    }
+
+    @Override
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserInfoEntity)) {
+        if (!(object instanceof ItemInfoEntity)) {
             return false;
         }
-        UserInfoEntity other = (UserInfoEntity) object;
+        ItemInfoEntity other = (ItemInfoEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-        @Override
-        public String toString() {
+    @Override
+    public String toString() {
         return "entity.Userinfo[ id=" + id + " ]";
     }
-        
-    }
-    
+
+}

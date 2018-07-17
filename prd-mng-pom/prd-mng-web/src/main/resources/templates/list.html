@@ -27,7 +27,9 @@
             </table> 
        
             <div class="footer">
-                <a th:href="@{/newCreate}" tabindex="3" name="createLink">商品登録</a>
+                <form action="./newCreate" th:action="@{./newCreate}" method="post">
+                    <button type="submit" class="btn btn-link" name="createLink">商品登録</button>
+                </form>
                 <p><a th:href="@{/}" tabindex="4" name="topLink" >トップへ戻る</a></p>
             </div>
 

@@ -6,6 +6,8 @@
 package com.domain.form;
 
 import java.io.Serializable;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,22 +15,22 @@ import javax.validation.constraints.Size;
  *
  * @author Naoto Endo
  */
-public class ItemCreateForm implements Serializable{
-    
+public class ItemCreateForm implements Serializable {
+
     private static final long serialVersionUID = -157143280035400042L;
-    
+
     @NotNull
     @Size(min = 1, max = 12)
     private String itemId;
-    
+
     @NotNull
     @Size(min = 1, max = 12)
     private String itemName;
-    
-    @NotNull
-    @Size(min = 1, max = 12)
-    private int price;    
 
+    @NotNull
+    @Max(999999999)
+    @Min(0)
+    private int price;
 
     /**
      * @return the itemCode
@@ -71,5 +73,5 @@ public class ItemCreateForm implements Serializable{
     public void setPrice(int price) {
         this.price = price;
     }
-    
+
 }
