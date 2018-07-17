@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" href="css/user.css" th:href="@{/css/user.css}" />
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/user.css}" />
+        <title>商品管理トップ</title>
 
-    <title>商品管理トップ</title>
-</head>
-
-<body>
-
-    <div class="main">
-
-        <div class="header">
-            <h1>商品管理トップ</h1>
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+                <h1>商品管理トップ</h1>
+            </div>    
+            <form action="#" th:action="@{./list}" method="post">
+                <div class="contents">
+                    <button type="submit" name="enter" class="btn btn-default" tabindex="1">商品一覧</botton>
+                </div>
+            </form>        
         </div>
-    
-        <form action="./list.html" th:action="@{./list}">
-            <div class="contents">
-                <button type="submit" name="enter" class="btn btn-default" tabindex="1">商品一覧</bottun>
-            </div>
-        </form>
-        
-    </div>
-</body>
+    </body>
 </html>

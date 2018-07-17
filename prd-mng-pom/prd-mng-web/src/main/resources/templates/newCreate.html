@@ -1,66 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/user.css}" />
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" href="css/user.css" th:href="@{/css/user.css}" />
+        <title>商品登録編集</title>
+    </head>
 
-    <title>商品登録編集</title>
-    <script type="text/javascript" src="js/item.js"></script>
-</hea
+    <body onload="init()">
+        <div class="main">
+            <div class="header">
+                <h1>商品登録編集</h1>
+                <p th:if="${validationError}" th:text="${validationError}">validation error</p>
+            </div>
 
+            <form role="form" action="./newCreate.html" th:action="@{./itemCreate}" th:object="${itemCreateForm}" method="post">                
+                <div class="contents">
+                    <label class="control-label" for="itemId"><abbr title="required">*</abbr>商品コード</label>
+                    <input type="text" class="form-control" id="itemId" name="itemId" th:field="*{itemId}"/> 
+<!--                           context:property placeholder='商品コードを入力してください(半角英数5文字以内)' maxlength="5" 
+                           pattern="^[0-9A-Za-z]+$" tabindex="1" required/>-->
+                    <span th:if="${#fields.hasError('itemId')}" th:errors="*{itemId}" class="help-block">error!</span>
+                </div>
+                <!--            商品名
+                            <div class="contents">
+                                <label class="control-label" for="itemName"><abbr title="required">*</abbr>商品名</label>
+                                <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}"
+                                       placeholder='商品名を入力してください' tabindex="2" required>
+                                <span th:if="${#fields.hasError('itemName')}" th:errors="*{itemName}" class="help-block" value="${itemNameError}"></span>
+                            </div>
+                            価格
+                            <div class="contents">
+                                <label class="control-label" for="price"><abbr title="required">*</abbr>価格</label>
+                                <input type="text" class="form-control" id="price" name="price" th:field="*{price}" 
+                                       placeholder='価格を入力してください(半角数字)' input pattern="^[0-9]+$" tabindex="3" required>
+                                <span th:if="${#fields.hasError('price')}" th:errors="*{price}" class="help-block" value="${priceError}"></span>
+                            </div>
+                            <div class="contents">
+                                <button type="submit" name="enter" class="btn btn-default" tabindex="4">登録</button>
+                            </div>-->
+            </form>
 
-
-
-
-
-
-
-
-
-d>
-
-<body onload="init()">
-
-    <div class="main">
-
-        <div class="header">
-            <h1>商品登録編集</h1>
-            <p th:if="${message}" th:text="${message}" class="blue" />
-            <p th:if="${validationError}" th:text="${validationError}"></p>
+            <div class="contents">
+                <p><a th:href="@{/list}" tabindex="5" name="return">商品一覧へ戻る</a></p>
+                <p><a th:href="@{/}" tabindex="4" name="topLink" >トップへ戻る</a></p>
+            </div>
         </div>
-
-        <form role="form" action="./newCreate.html" th:action="@{./newCreate}" th:object="${newCreateForm}">
-            <!--商品コード-->
-            <div class="contents">
-                <label class="control-label" for="itemCode"><abbr title="required">*</abbr>商品コード</label>
-                <input type="text" class="form-control" id="itemCode" name="itemCode" th:field="*{itemCode}" placeholder='商品コードを入力してください(半角英数5文字以内)' maxlength="5" pattern="^[0-9A-Za-z]+$" tabindex="1" required>
-                <span th:if="${#fields.hasError('itemCode')}" th:errors="*{itemCode}" class="help-block" value="${itemCodeError}"></span>
-            </div>
-            <!--商品名-->
-            <div class="contents">
-                <label class="control-label" for="itemName"><abbr title="required">*</abbr>商品名</label>
-                <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}" placeholder='商品名を入力してください' tabindex="2" required>
-                <span th:if="${#fields.hasError('itemName')}" th:errors="*{itemName}" class="help-block" value="${itemNameError}"></span>
-            </div>
-            <!--価格-->
-            <div class="contents">
-                <label class="control-label" for="price"><abbr title="required">*</abbr>価格</label>
-                <input type="text" class="form-control" id="price" name="price" th:field="*{price}" placeholder='価格を入力してください(半角数字)' input pattern="^[0-9]+$" tabindex="3" required>
-                <span th:if="${#fields.hasError('price')}" th:errors="*{price}" class="help-block" value="${priceError}"></span>
-            </div>
-            <div class="contents">
-                <button type="submit" name="enter" class="btn btn-default" tabindex="4">登録</button>
-            </div>
-        </form>
-
-        <div class="contents">
-            <p><a href="list.html" tabindex="5" name="return">商品一覧へ戻る</a></p>
-            <p><a href="top.html" tabindex="6" name="return">トップへ戻る</a></p>
-        </div>
-    </div>
-</body>
+    </body>
 
 </html>
