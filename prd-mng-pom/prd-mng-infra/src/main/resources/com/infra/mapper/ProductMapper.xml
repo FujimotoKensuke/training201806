@@ -16,4 +16,7 @@
     <select id="selectList" resultType="com.infra.entity.ProductEntity">
         SELECT productId, productCd, productName, price, deletedFlg, version FROM product
     </select>
+    <select id="selectVersion" resultType="com.infra.entity.ProductEntity">
+        SELECT productId, productCd, productName, price, deletedFlg,version FROM product WHERE productId = #{productId}
+    </select>
 </mapper>

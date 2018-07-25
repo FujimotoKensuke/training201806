@@ -22,21 +22,24 @@ public class RegistrationForm implements Serializable {
 
     @Nullable
     @Min(1)
-    @Max(9999)   
+    @Max(9999)
     private Integer productId;
     
-    @NotNull
-    @Size(min = 1, max = 6)
+    @NotNull(message="商品コードは1文字以上6文字以下で入力してください。")
+    @Size(min = 1, max = 6,message="商品コードは1文字以上6文字以下で入力してください。")
     private String productCd;
 
-    @NotNull
-    @Size(min = 1, max = 20)
+    @NotNull(message="商品名は1文字以上20文字以下で入力してください。")
+    @Size(min = 1, max = 20,message="商品名は1文字以上20文字以下で入力してください。")
     private String productName;
 
-    @NotNull
-    @Min(1)
-    @Max(999999)
+    @NotNull(message="価格は1桁以上6桁以下の半角数字で入力して下さい。")
+    @Min(value=1,message="価格は1桁以上6桁以下の半角数字で入力して下さい。")
+    @Max(value=999999,message="価格は1桁以上6桁以下の半角数字で入力して下さい。")
     private Integer price;
+    
+    @NotNull
+    private long version;
 
     /**
      * @return the productId
@@ -92,5 +95,19 @@ public class RegistrationForm implements Serializable {
      */
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    /**
+     * @return the version
+     */
+    public long getVersion() {
+        return version;
+    }
+
+    /**
+     * @param version the version to set
+     */
+    public void setVersion(long version) {
+        this.version = version;
     }
 }

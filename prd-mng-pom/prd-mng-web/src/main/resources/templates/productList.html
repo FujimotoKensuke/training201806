@@ -24,6 +24,7 @@
                         <th>商品コード</th>
                         <th>商品名</th>
                         <th>価格</th>
+                        <th>バージョン</th>
                     </tr>
                 </thead>
                 <tbody th:remove="all-but-first" th:each="result : ${productModelList}">
@@ -32,9 +33,16 @@
                             <td th:text="${result['productCd']}" >PR01</td>
                             <td th:text="${result['productName']}">商品A</td>
                             <td th:text="${result['price']}">100</td>
+                            <td th:text="${result['version']}">1</td>
                         </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="footer">
+            <br/>
+            <form action="./top" th:action="@{./top}" method="get">
+                <input type="submit" class="btn btn-link" th:value="トップへ戻る"/>
+            </form>
         </div>
     </div>
 </body>

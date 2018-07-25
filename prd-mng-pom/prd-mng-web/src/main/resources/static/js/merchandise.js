@@ -4,7 +4,8 @@ function update(elm) {
     var productCd = texts[1].innerHTML;
     var productName = texts[2].innerHTML;
     var price = texts[3].innerHTML;
-    location.href = "./update?productId=" + productId + "&productCd=" + productCd + "&productName=" + productName + "&price=" + price;
+    var version = texts[4].innerHTML;
+    location.href = "./update?productId=" + productId + "&productCd=" + productCd + "&productName=" + productName + "&price=" + price + "&version=" + version;
 }
 
 function init() {
@@ -25,5 +26,8 @@ function init() {
     }
     if (urlPrm.price != undefined) {
         document.getElementById("price").value = decodeURI(urlPrm.price);
+    }
+    if (urlPrm.version != undefined) {
+        document.getElementById("version").value = decodeURI(urlPrm.version);
     }
 }

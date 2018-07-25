@@ -34,7 +34,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         ProductEntity entity = ProductEntityFactory.create(model);
         entity.setDeletedFlg(MerchandiseEnum.DeletedFlg.OFF.getId());
         entity.setVersion(0L);
-
+     
         productMapper.insert(entity);
     }
     
@@ -45,11 +45,17 @@ public class ProductRepositoryImpl implements ProductRepository {
      */
     @Override
     public void updateProduct(ProductModel model) {
+        
         ProductEntity entity = ProductEntityFactory.create(model);
-        entity.setDeletedFlg(MerchandiseEnum.DeletedFlg.OFF.getId());
-        entity.setVersion(0L);
-
-        productMapper.update(entity);
+            
+        if(productMapper.selectVersion(entity) == entity.getVersion()){
+            entity.setDeletedFlg(MerchandiseEnum.DeletedFlg.OFF.getId());
+            //versionを1増やす
+            entity.setVersion(entity.getVersion() + 1L);
+            productMapper.update(entity);
+        }else{
+            //ここで競合のメッセージ(専用の例外処理がある？)
+        }
     }
     
     /**
@@ -60,6 +66,18 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<ProductEntity> selectProductList() {
         return productMapper.selectList();
+    }
+    
+    /**
+     * バージョン情報取得
+     *
+     * @return
+     */
+    @Override
+    public Long selectVersion(ProductModel model) {
+        ProductEntity entity = ProductEntityFactory.create(model);
+            long version = productMapper.selectVersion(entity);
+        return version;
     }
 
 }

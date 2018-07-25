@@ -58,5 +58,5 @@ public class ProductServiceImpl implements ProductService {
         // 商品情報一覧取得
         return ProductModelFactory.create(productRepository.selectProductList());
     }
-
+       
 }

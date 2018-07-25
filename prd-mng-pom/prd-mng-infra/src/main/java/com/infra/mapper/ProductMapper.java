@@ -14,5 +14,7 @@ public interface ProductMapper {
     
     void update(ProductEntity entity);
     
-     java.util.List<ProductEntity> selectList();
+    java.util.List<ProductEntity> selectList();
+    
+    Long selectVersion(ProductEntity entity);
 }

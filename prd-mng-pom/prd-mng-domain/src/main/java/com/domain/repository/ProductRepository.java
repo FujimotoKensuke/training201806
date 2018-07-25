@@ -21,5 +21,7 @@ public interface ProductRepository {
     void updateProduct(ProductModel model);
     
     List<ProductEntity> selectProductList();
+    
+    Long selectVersion(ProductModel model);
 
 }
