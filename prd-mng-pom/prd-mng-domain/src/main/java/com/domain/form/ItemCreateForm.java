@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.domain.form;
 
-import java.io.Serializable;
+import java.io.Serializable;//シリアライズ(直列化)：Javaのインスタンスをバイト列として出力すること
+//インスタンスを外部記憶装置とかに保存出来る。簡単に。
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *
+ *画面上での入力値を保持するクラス。セッターゲッターが必要。
  * @author Naoto Endo
  */
 public class ItemCreateForm implements Serializable {
@@ -22,7 +18,7 @@ public class ItemCreateForm implements Serializable {
     @NotNull
     @Size(min = 1, max = 12)
     private String itemId;
-
+    
     @NotNull
     @Size(min = 1, max = 12)
     private String itemName;
@@ -30,7 +26,7 @@ public class ItemCreateForm implements Serializable {
     @NotNull
     @Max(999999999)
     @Min(0)
-    private int price;
+    private int price;//int型は@Sizeは利用出来ず。
 
     /**
      * @return the itemCode

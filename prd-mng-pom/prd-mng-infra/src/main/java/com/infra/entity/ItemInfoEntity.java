@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.infra.entity;
 
 import java.io.Serializable;
@@ -22,15 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Naoto Endo
  */
 @Entity
-@Table(name = "userinfo")
+@Table(name = "iteminfo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Userinfo.findAll", query = "SELECT u FROM Userinfo u")
-    , @NamedQuery(name = "Userinfo.findById", query = "SELECT u FROM Userinfo u WHERE u.id = :id")
-    , @NamedQuery(name = "Userinfo.findByName", query = "SELECT u FROM Userinfo u WHERE u.name = :name")
-    , @NamedQuery(name = "Userinfo.findByComment", query = "SELECT u FROM Userinfo u WHERE u.comment = :comment")
-    , @NamedQuery(name = "Userinfo.findByDeletedFlg", query = "SELECT u FROM Userinfo u WHERE u.deletedFlg = :deletedFlg")
-    , @NamedQuery(name = "Userinfo.findByVersion", query = "SELECT u FROM Userinfo u WHERE u.version = :version")})
+    @NamedQuery(name = "Iteminfo.findAll", query = "SELECT u FROM Iteminfo u")
+    , @NamedQuery(name = "Iteminfo.findById", query = "SELECT u FROM Iteminfo u WHERE u.id = :id")
+    , @NamedQuery(name = "Iteminfo.findByName", query = "SELECT u FROM Iteminfo u WHERE u.name = :name")
+    , @NamedQuery(name = "Iteminfo.findByComment", query = "SELECT u FROM Iteminfo u WHERE u.price = :price")})
 
 public class ItemInfoEntity implements Serializable {
 
@@ -110,7 +103,7 @@ public class ItemInfoEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Userinfo[ id=" + id + " ]";
+        return "entity.Iteminfo[ id=" + id + " ]";
     }
 
 }

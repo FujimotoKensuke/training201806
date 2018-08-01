@@ -9,8 +9,8 @@
  */
 
 CREATE TABLE `iteminfo` (
-  `id` varchar(12) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `price` varchar(100) DEFAULT NULL,
+  `id` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `price` int(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

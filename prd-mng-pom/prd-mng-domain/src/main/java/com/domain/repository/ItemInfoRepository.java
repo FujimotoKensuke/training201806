@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.domain.repository;
 
 import com.domain.model.ItemModel;
+import com.infra.entity.ItemInfoEntity;
+import java.util.List;
 
 /**
- *
+ *アイテム情報一覧取得処理インタフェースとして、selectItemList()を追加。
+ *アイテム情報リポジトリ
  * @author Naoto Endo
  */
 public interface ItemInfoRepository {
     
     void insertItem(ItemModel model);
     
+    List<ItemInfoEntity> selectItemList();
 }

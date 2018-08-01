@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/user.css}" />
+      <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/user.css}" />
 
-    <title>商品一覧</title>
-
-</head>
-
-<body>
-    <div class="main">
-        <div class="header">
-            <h1>商品一覧</h1>
-        </div>
-        <div class="contents">
-            <table class="table table-striped">
-                <thread>
-                    <tr>
-                        <th name="productCode">商品コード</th>
-                        <th name="productName">商品名</th>
-                        <th name="productPrice">価格</th>
-                    </tr>
-                </thread>
-            </table> 
-       
-            <div class="footer">
-                <form action="./newCreate" th:action="@{./newCreate}" method="post">
-                    <button type="submit" class="btn btn-link" name="createLink">商品登録</button>
-                </form>
-                <p><a th:href="@{/}" tabindex="4" name="topLink" >トップへ戻る</a></p>
+        <title>商品一覧</title>
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+                <h1>商品一覧</h1>
             </div>
+            <div class="contents">
+                <table class="table table-striped">
+                    <thread>
+                        <tr>
+                            <th name="productCode">商品コード</th>
+                            <th name="productName">商品名</th>
+                            <th name="productPrice">価格</th>
+                        </tr>
+                    </thread>
 
+                    <tbody th:remove = "all-but-first" th:each = "result :${itemModelList}">
+
+                        <tr onclick="update(this)" tabindex="1"
+                            onmouseover="this.style.backgroundColor = '#b0c4de'" 
+                            onmouseout="this.style.backgroundColor = ''">
+                            
+                            <td th:text ="${result['itemId']}">01</td>
+                            <td th:text ="${result['itemName']}">item01</td>
+                            <td th:text="${result['price']}">価格</td>                            
+                        </tr>           
+
+                    </tbody>  
+                </table> 
+
+                <div class="footer">
+                    <form action="./newCreate" th:action="@{./newCreate}" method="post">
+                        <button type="submit" class="btn btn-link" name="createLink">商品登録</button>
+                    </form>
+                    <p><a th:href="@{/}" tabindex="4" name="topLink" >トップへ戻る</a></p>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
