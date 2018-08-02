@@ -6,7 +6,7 @@ package com.common.misc;
 /**
  * じゃんけんに関連する列挙型クラスです。
  */
-public class JankenEnum {
+public class MerchandiseEnum {
 
     /**
      * じゃんけんの勝敗の種別を持つ列挙型クラスです。
