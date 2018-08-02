@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/merchandise.css" th:href="@{/css/merchandise.css}"/>
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
+<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+<title>商品管理システム</title>
+<script type="text/javascript" src="js/merchandise.js"></script>
+</head>
+<body onload="init()">
+    <div class="main">
+        <div class="header">
+            <h1>商品登録</h1>
+            <p th:if="${message}" th:text="${message}" class="blue" />
+            <p th:if="${validationError}" th:text="${validationError}">validation error</p>
+        </div>
+        <form role="form" action="./registration.html" th:action="@{./registration}" th:object="${registrationForm}"　method="post">
+          <!-- productCd -->
+          <div class="contents">
+            <label class="control-label" for="productCd"><abbr title="required">*</abbr>商品コード</label>
+            <input type="text" class="form-control" id="productCd" name="productCd" th:field="*{productCd}" />
+            <span th:if="${#fields.hasErrors('productCd')}" th:errors="*{productCd}" class="help-block" value="${productCdError}"></span>
+          </div>
+          <!-- productName -->
+          <div class="contents">
+            <label class="control-label" for="productName"><abbr title="required">*</abbr>商品名</label>
+            <input type="text" class="form-control" id="productName" name="productName" th:field="*{productName}" />
+            <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="help-block" value="${productNameError}"></span>
+          </div>
+          <!-- price -->
+          <div class="contents">
+            <label class="control-label" for="comment"><abbr title="required">*</abbr>価格</label>
+            <input type="text" class="form-control" id="price" name="price" th:field="*{price}" />
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="help-block" value="${priceError}"></span>
+          </div>
+          <div class="contents"　th:if="${updateFlg == 0}">
+            <button type="submit" name="enter" class="btn btn-default" >登録</button>
+          </div>
+          <div class="contents"　th:if="${updateFlg == 1}">
+            <button type="submit" name="update" class="btn btn-default" >更新</button>
+          </div>
+          <!-- productId -->
+            <input type="hidden" id="productId" name="productId" th:field="*{productId}" />
+          <!-- version -->
+            <input type="hidden" id="version" name="version" th:field="*{version}" />
+        </form>
+        <div class="footer">
+            <br/>
+            <form action="./productList" th:action="@{./productList}" method="get">
+                <input type="submit" class="btn btn-link" th:value="商品一覧へ戻る"/>
+            </form>
+            <form action="./top" th:action="@{./top}" method="get">
+                <input type="submit" class="btn btn-link" th:value="トップへ戻る"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

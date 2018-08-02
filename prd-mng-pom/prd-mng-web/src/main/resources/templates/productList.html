@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/merchandise.css" th:href="@{/css/merchandise.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+<title>商品管理システム</title>
+<script type="text/javascript" src="js/merchandise.js" th:src="@{/js/merchandise.js}"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>商品一覧</h1>
+            <form action="./registration" th:action="@{./registration}" method="post">
+                <input type="submit" class="btn btn-link" th:value="新規登録" name="init" />
+            </form>
+        </div>
+        <div class="contents">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>商品ID</th>
+                        <th>商品コード</th>
+                        <th>商品名</th>
+                        <th>価格</th>
+                        <th>バージョン</th>
+                    </tr>
+                </thead>
+                <tbody th:remove="all-but-first" th:each="result : ${productModelList}">
+                        <tr onclick="update(this)">
+                            <td th:text="${result['productId']}" >01</td>
+                            <td th:text="${result['productCd']}" >PR01</td>
+                            <td th:text="${result['productName']}">商品A</td>
+                            <td th:text="${result['price']}">100</td>
+                            <td th:text="${result['version']}">1</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <br/>
+            <form action="./top" th:action="@{./top}" method="get">
+                <input type="submit" class="btn btn-link" th:value="トップへ戻る"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
