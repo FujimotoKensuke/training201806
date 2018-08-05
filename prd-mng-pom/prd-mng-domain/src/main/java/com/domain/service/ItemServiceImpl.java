@@ -23,7 +23,6 @@ public class ItemServiceImpl implements ItemService {
     
     //アイテム情報登録処理
     //@param model
-    
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(@NonNull ItemModel model){
@@ -31,6 +30,14 @@ public class ItemServiceImpl implements ItemService {
         itemInfoRepository.insertItem(model);  
     }
 
+    //アイテム情報更新処理
+    //@param model
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(@NonNull ItemModel model)throws Exception{
+        itemInfoRepository.updateItem(model);
+    }
+    
     //アイテム情報一覧取得処理
     @Override
     public List<ItemModel> getItemList(){

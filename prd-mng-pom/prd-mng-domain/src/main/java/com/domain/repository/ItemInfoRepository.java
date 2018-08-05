@@ -13,5 +13,7 @@ public interface ItemInfoRepository {
     
     void insertItem(ItemModel model);
     
+    void updateItem(ItemModel model)throws Exception;
+    
     List<ItemInfoEntity> selectItemList();
 }

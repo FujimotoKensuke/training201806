@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.validation.BindingResult;
-import org.springframework.lang.NonNull;
 
 
 /**
@@ -29,24 +28,19 @@ public class ItemController {
      //トップ画面表示（初期表示）API   
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String top(Model model) {
-        // model.addAttribute("message", "ハロー, Spring Boot!");   // パラメタを渡す
         return "top"; // 使用するテンプレートの名前を指定する
     }
        
-    //アイテム情報習得API    
+    //アイテム情報習得（初期表示）API    
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     public String getItemList(Model model) {
         final List<ItemModel> itemModelList = itemService.getItemList();
         model.addAttribute("itemModelList", itemModelList);
         return "list";
     }
-    
-    
-    
-    
-    
+        
      //アイテム情報登録（初期表示）API
-    @RequestMapping(value = "/newCreate",params="init", method = RequestMethod.POST) 
+    @RequestMapping(value = "/newCreate", method = RequestMethod.POST) 
     public String newCreateInit(@ModelAttribute ItemCreateForm form, Model model) {
         return "newCreate"; // 使用するテンプレートの名前を指定する
     }
@@ -64,14 +58,26 @@ public class ItemController {
         return "newCreate";
     }
     
-    /**
-    *アイテム情報登録（登録実行）API
-    *@param itemModel
+    //アイテム情報登録（更新）API
+    /*@param itemModel
     *@param model
     *@return    
     */    
-//    @RequestMapping(value="/newCreate",params="update",method={RequestMethod.POST,RequestMethod.GET})
-//    public String itemUpdate(@NonNull @ModelAttribute ItemModel itemodel,Model model){
-//        return "newCreate";
-//    }  
+    @RequestMapping(value="/newCreate",params="update",method={RequestMethod.POST,RequestMethod.GET})
+    public String itemUpdateDone(@Validated @ModelAttribute ItemCreateForm form,BindingResult result,Model model)throws Exception{
+         if(result.hasErrors()){
+            model.addAttribute("validationError","不正な値が入力されました");
+            return newCreateInit(form,model);
+        }
+        itemService.update(ItemModelFactory.create(form));
+        
+        model.addAttribute("message","情報を更新しました。");     
+        model.addAttribute("updateFlg",1);
+        return "newCreate";
+    }
+    
+    
+    
+    
+    
 }

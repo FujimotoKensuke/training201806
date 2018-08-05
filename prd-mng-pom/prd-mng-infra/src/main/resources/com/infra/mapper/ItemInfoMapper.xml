@@ -6,11 +6,20 @@
 <mapper namespace="com.infra.mapper.ItemInfoMapper">
     
     <insert id="insert">
-        INSERT INTO item.iteminfo (id, name, price)
+        INSERT INTO iteminfo (id, name, price)
         VALUES (#{id}, #{name}, #{price})
     </insert>
     
     <select id="selectList" resultType="com.infra.entity.ItemInfoEntity">
         SELECT id, name, price FROM item.iteminfo
     </select>
+    
+    <update id="update">
+        UPDATE iteminfo SET id = #{id}, name = #{name}, price = #{price} WHERE id = #{id}
+    </update>
+    
+    <select id = "selectForUpdate" resultType="com.infla.entity.IteminfoEntity">
+        SELECT id, name, price FROM iteminfo WHERE id = #{id}
+    </select>            
+    
 </mapper>

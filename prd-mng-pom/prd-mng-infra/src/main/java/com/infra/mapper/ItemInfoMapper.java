@@ -15,5 +15,9 @@ public interface ItemInfoMapper {
     
     void insert(ItemInfoEntity entity);
     
+    void update(ItemInfoEntity entity);
+    
     List<ItemInfoEntity> selectList();
+    
+    ItemInfoEntity selectForUpdate(ItemInfoEntity entity);
 }

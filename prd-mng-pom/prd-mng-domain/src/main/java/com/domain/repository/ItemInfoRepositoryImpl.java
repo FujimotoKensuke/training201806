@@ -28,8 +28,21 @@ public class ItemInfoRepositoryImpl  implements ItemInfoRepository {
         
         itemInfoMapper.insert(entity);
     }
-    
-        /**
+    /**
+     * アイテム情報更新
+     * @param model
+     * @throws java.lang.Exception
+     */
+    @Override
+    public void updateItem(ItemModel model)throws Exception{
+        ItemInfoEntity entity = ItemInfoEntityFactory.create(model);
+        entity = itemInfoMapper.selectForUpdate(entity);
+        if (false){
+            throw new Exception();
+        }
+        itemInfoMapper.update(entity);
+    }
+    /**
      * アイテム一覧情報登録
      * @return
      */

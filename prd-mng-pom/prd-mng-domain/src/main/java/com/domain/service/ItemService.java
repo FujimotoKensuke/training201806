@@ -14,6 +14,10 @@ public interface ItemService {
     //@param model
     void create(@NonNull ItemModel model);
     
+    //アイテム情報更新処理
+    //@palam model
+    void update(@NonNull ItemModel model) throws Exception;
+    
     //アイテム情報一覧取得処理
     //@return
     List<ItemModel> getItemList();    
