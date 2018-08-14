@@ -18,7 +18,7 @@
         UPDATE iteminfo SET id = #{id}, name = #{name}, price = #{price} WHERE id = #{id}
     </update>
     
-    <select id = "selectForUpdate" resultType="com.infla.entity.IteminfoEntity">
+    <select id = "selectForUpdate" resultType="com.infla.entity.ItemInfoEntity">
         SELECT id, name, price FROM iteminfo WHERE id = #{id}
     </select>            
     

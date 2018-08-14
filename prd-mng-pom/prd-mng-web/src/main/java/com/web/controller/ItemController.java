@@ -63,7 +63,7 @@ public class ItemController {
     *@param model
     *@return    
     */    
-    @RequestMapping(value="itemUpdate",params="update",method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="/itemUpdate",params="update",method={RequestMethod.POST,RequestMethod.GET})
     public String itemUpdateDone(@Validated @ModelAttribute ItemCreateForm form,BindingResult result,Model model)throws Exception{
          if(result.hasErrors()){
             model.addAttribute("validationError","不正な値が入力されました");
