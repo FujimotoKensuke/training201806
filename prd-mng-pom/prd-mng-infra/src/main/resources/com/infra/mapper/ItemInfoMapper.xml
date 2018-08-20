@@ -15,11 +15,11 @@
     </select>
     
     <update id="update">
-        UPDATE iteminfo SET id = #{id}, name = #{name}, price = #{price} WHERE id = #{id}
+        UPDATE item.iteminfo SET id = #{id}, name = #{name}, price = #{price} WHERE id = #{id}
     </update>
     
     <select id = "selectForUpdate" resultType="com.infra.entity.ItemInfoEntity">
-        SELECT id, name, price FROM iteminfo WHERE id = #{id}
+        SELECT id, name, price FROM item.iteminfo WHERE id = #{id}
     </select>            
     
 </mapper>
