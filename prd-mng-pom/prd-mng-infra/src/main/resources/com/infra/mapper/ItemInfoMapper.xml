@@ -6,7 +6,7 @@
 <mapper namespace="com.infra.mapper.ItemInfoMapper">
     
     <insert id="insert">
-        INSERT INTO iteminfo (id, name, price)
+        INSERT INTO item.iteminfo (id, name, price)
         VALUES (#{id}, #{name}, #{price})
     </insert>
     

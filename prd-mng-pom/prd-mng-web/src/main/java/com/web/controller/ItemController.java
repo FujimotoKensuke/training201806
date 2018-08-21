@@ -64,16 +64,17 @@ public class ItemController {
     *@return    
     */    
     @RequestMapping(value="/itemUpdate",method={RequestMethod.POST,RequestMethod.GET})
-    public String itemUpdateDone(@Validated @ModelAttribute ItemCreateForm form,BindingResult result,Model model)throws Exception{
+    public String itemUpdateDone(@Validated @ModelAttribute ItemCreateForm form,BindingResult result,Model model) throws Exception{
          if(result.hasErrors()){
             model.addAttribute("validationError","不正な値が入力されました");
             return newCreateInit(form,model);
         }
+         
         itemService.update(ItemModelFactory.create(form));
         
         model.addAttribute("message","情報を更新しました。");     
         model.addAttribute("updateFlg",1);
-        return "newCreate";
+        return "/itemUpdate";
     }
     
     
