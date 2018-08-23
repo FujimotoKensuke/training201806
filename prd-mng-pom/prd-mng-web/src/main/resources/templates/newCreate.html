@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org">
       <head>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" />
-        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
         <link rel="stylesheet" th:href="@{/css/user.css}" />
 
         <title>商品登録編集</title>
@@ -40,8 +40,12 @@
                            placeholder='価格を入力してください(半角数字)' input pattern="^[0-9]+$" tabindex="3" required>
                     <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="help-block"></span>
                 </div>
-                <div class="contents">
+                
+                <div class="contents"　th:if="${updateFlg == 0}">
                     <button type="submit" name="enter" class="btn btn-default" tabindex="4">登録</button>
+                </div>
+                <div class="contents"　th:if="${updateFlg == 1}">
+                    <button type="submit" name="update" class="btn btn-default" tabindex="5">更新</button>
                 </div>
             </form>
 
