@@ -33,15 +33,14 @@ public class ItemController {
     }
        
     //アイテム情報リスト取得（初期表示）API    
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getItemList(Model model) {
         final List<ItemModel> itemModelList = itemService.getItemList();
         model.addAttribute("itemModelList", itemModelList);
         return "list";
     }
         
-    
-    
+      
     
     
      //アイテム情報登録（初期表示）API

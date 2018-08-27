@@ -50,7 +50,9 @@
             </form>
 
             <div class="contents">
-                <p><a th:href="@{/list}" tabindex="5" name="return">商品一覧へ戻る</a></p>
+                    <form action="./list" th:action="@{./list}" method="post">
+                        <button type="submit" class="btn btn-link" name="createLink">商品一覧へ戻る</button>
+                    </form>      
                 <p><a th:href="@{/}" tabindex="4" name="topLink" >トップへ戻る</a></p>
             </div>
         </div>
